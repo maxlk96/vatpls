@@ -23,6 +23,17 @@ let availableControllers = [
 ];
 let awayControllers = [];
 
+// Helper function to find and update a controller's data
+const updateControllerTimestamp = (controllerList, updatedControllers) => {
+  return controllerList.map((controller) => {
+    const updatedController = updatedControllers.find(c => c.CID === controller.CID);
+    if (updatedController) {
+      return { ...updatedController, timestamp: new Date().toISOString() };
+    }
+    return controller;
+  });
+};
+
 // GET route to retrieve controllers
 app.get('/api/controllers', (req, res) => {
   res.json({
@@ -37,19 +48,10 @@ app.post('/api/controllers', (req, res) => {
   const { activeControllers: newActiveControllers, availableControllers: newAvailableControllers, awayControllers: newAwayControllers } = req.body;
 
   if (Array.isArray(newActiveControllers) && Array.isArray(newAvailableControllers) && Array.isArray(newAwayControllers)) {
-    // Update the controller data
-    activeControllers = newActiveControllers.map(controller => ({
-      ...controller,
-      timestamp: new Date().toISOString()  // Reset timestamp when moving to active
-    }));
-    availableControllers = newAvailableControllers.map(controller => ({
-      ...controller,
-      timestamp: new Date().toISOString()  // Reset timestamp when moving to available
-    }));
-    awayControllers = newAwayControllers.map(controller => ({
-      ...controller,
-      timestamp: new Date().toISOString()  // Reset timestamp when moving to away
-    }));
+    // Update the controller data while only changing timestamps for updated controllers
+    activeControllers = updateControllerTimestamp(activeControllers, newActiveControllers);
+    availableControllers = updateControllerTimestamp(availableControllers, newAvailableControllers);
+    awayControllers = updateControllerTimestamp(awayControllers, newAwayControllers);
 
     res.status(200).send('Controllers updated successfully');
   } else {
