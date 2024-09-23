@@ -18,7 +18,9 @@
               <v-row>
                 <v-tooltip top>
                   <template v-slot:activator="{ on, attrs }">
-                    <v-col cols="3" v-bind="attrs" v-on="on">{{ controller.sign }}</v-col>
+                    <v-col cols="6" v-bind="attrs" v-on="on">
+                      {{ controller.sign }} ({{ controller.CID }})
+                    </v-col>
                   </template>
                   <span>{{ controller.name }}</span>
                 </v-tooltip>
@@ -48,15 +50,17 @@
               <v-row>
                 <v-tooltip top>
                   <template v-slot:activator="{ on, attrs }">
-                    <v-col cols="4" v-bind="attrs" v-on="on">{{ controller.sign }}</v-col>
+                    <v-col cols="6" v-bind="attrs" v-on="on">
+                      {{ controller.sign }} ({{ controller.CID }})
+                    </v-col>
                   </template>
                   <span>{{ controller.name }}</span>
                 </v-tooltip>
-                <v-col cols="4">Paus</v-col>
-                <v-col cols="4">{{ formatTimeDifference(controller.timestamp) }}</v-col>
+                <v-col cols="3">Paus</v-col>
+                <v-col cols="3">{{ formatTimeDifference(controller.timestamp) }}</v-col>
               </v-row>
               <v-row>
-                <v-col cols="12">{{ controller.endorsment === 'NIL' ? ' ' : controller.endorsment }}</v-col>
+                <v-col cols="6">{{ controller.endorsment === 'NIL' ? ' ' : controller.endorsment }}</v-col>
               </v-row>
             </v-card-text>
           </v-card>
@@ -77,15 +81,17 @@
               <v-row>
                 <v-tooltip top>
                   <template v-slot:activator="{ on, attrs }">
-                    <v-col cols="4" v-bind="attrs" v-on="on">{{ controller.sign }}</v-col>
+                    <v-col cols="6" v-bind="attrs" v-on="on">
+                      {{ controller.sign }} ({{ controller.CID }})
+                    </v-col>
                   </template>
                   <span>{{ controller.name }}</span>
                 </v-tooltip>
-                <v-col cols="4">{{ controller.position }}</v-col>
-                <v-col cols="4">{{ formatTimeDifference(controller.timestamp) }}</v-col>
+                <v-col cols="3">{{ controller.position }}</v-col>
+                <v-col cols="3">{{ formatTimeDifference(controller.timestamp) }}</v-col>
               </v-row>
               <v-row>
-                <v-col cols="12">{{ controller.callsign }}</v-col>
+                <v-col cols="6">{{ controller.endorsment === 'NIL' ? ' ' : controller.endorsment }}</v-col>
               </v-row>
             </v-card-text>
           </v-card>
