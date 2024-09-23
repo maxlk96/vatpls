@@ -186,14 +186,14 @@ const newController = ref({
   timestamp: new Date().toISOString() // Single timestamp
 })
 const ratings = ['S1', 'S2', 'S3', 'C1']
-const endorsments = ['T2 APS', 'T1 TWR', 'T1 APP', 'NIL']
+const endorsments = ['NIL', 'T2 APS', 'T1 TWR', 'T1 APP']
 const selectedPosition = ref('')
 const selectedCallsign = ref('')
 const freeTextPosition = ref('') // Free text input for Övrig Tid
 const selectedController = ref(null)
 let originalSource = '' // Track where the controller was dragged from
 let originalController = null // Track the original controller
-const positions = ['Ground', 'Tower', 'Approach', 'Center']
+const positions = ['GG AD1', 'GG AD2', 'GG AD3', 'SA AD1', 'SA AD2', 'SA AD3', 'SA AD4', 'ACC1', 'ACC2', 'ACC3', 'ACC4', 'ACC5', 'ACC6', 'WS', 'Ö1', 'Ö2',]
 
 // Fetch controller data from the server
 async function fetchControllers() {
